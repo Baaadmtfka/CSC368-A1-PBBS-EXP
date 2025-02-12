@@ -1,6 +1,7 @@
-# BFS - backForwardBFS
+# BFS:
+#   breadthFirstSearch/backForwardBFS/BFS
 # Input Data:
-#   randLocalGraph
+#   graphData/randLocalGraph
 # System:
 #   CPU: X86AtomicSimpleCPU 200MHz
 #   MEM: DDR3_1600_8x8 8GB
@@ -21,28 +22,27 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 ### Customize:
 DEFAULT_BINARY = '/u/csc368h/winter/pub/workloads/pbbsbench/benchmarks/breadthFirstSearch/backForwardBFS/BFS'
 # DEFAULT_BINARY = '/u/csc368h/winter/pub/workloads/pbbsbench/benchmarks/breadthFirstSearch/serialBFS/BFS'
-DEFAULT_INFILE = f"{ROOT_DIR}/bfs-{SIZE}.adj"
-DEFAULT_OUTFILE = f"{ROOT_DIR}/bfs-{SIZE}.txt"
+DEFAULT_INFILE = f"{ROOT_DIR}/bfs-{SIZE}-input.adj"
+DEFAULT_OUTFILE = f"{ROOT_DIR}/bfs-{SIZE}-output.txt"
 
-# Generate Input File
 INPUT_CMD = [
     "/u/csc368h/winter/pub/workloads/pbbsbench/testData/graphData/randLocalGraph", 
     "-j", 
-    "-d 3", # unchanged 3d
-    f"-m {SIZE*100}", 
-    f"{SIZE*10}", 
+    "-d", "3", # unchanged 3d
+    "-m", f"{SIZE*100}", # edges
+    f"{SIZE*10}", # nodes
     DEFAULT_INFILE
 ]
 PROCESS_CMD = [
     DEFAULT_BINARY, 
-    f"-o {DEFAULT_OUTFILE}",
-    # f"-src {}", 
-    # f"-r {}", 
+    "-o", f"{DEFAULT_OUTFILE}",
+    # "-src", f"{}", 
+    # "-r", f"{}", 
     DEFAULT_INFILE
 ]
 # Generate Input File
 if not os.path.exists(DEFAULT_INFILE):
-    print("No file")
+    print("No existing file, generating input\n================================")
     subprocess.run(INPUT_CMD, 
                 cwd=ROOT_DIR, 
                 check=True)
@@ -92,4 +92,4 @@ root = Root(full_system=False, system=system) # must assign a root
 m5.instantiate() # must be called before m5.simulate
 m5.simulate()
 
-print('Finished BFS Benchmark')
+print(f'Finished BFS Benchmark, with inputs: {SIZE*10} nodes, {SIZE*100} edges')

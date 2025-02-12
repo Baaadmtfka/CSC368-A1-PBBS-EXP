@@ -335,8 +335,9 @@
                     "path": "system.cpu.workload",
                     "cmd": [
                         "/u/csc368h/winter/pub/workloads/pbbsbench/benchmarks/breadthFirstSearch/backForwardBFS/BFS",
-                        "-o /h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-3.txt",
-                        "/h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-3.adj"
+                        "-o",
+                        "/h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-3-output.txt",
+                        "/h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-3-input.adj"
                     ],
                     "cwd": "/h/u15/c1/00/zengzix2/CSC368/A1/EX1",
                     "drivers": [],

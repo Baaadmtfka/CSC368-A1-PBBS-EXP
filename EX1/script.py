@@ -23,7 +23,8 @@ gem5_cmd = [
     gem5_binary, 
     f"--outdir={outdir}", 
     gem5_script,
-    f"-s {args.size}"]
+    f"-s {args.size}"
+]
 
 # Run Benchmark Script
 subprocess.run(gem5_cmd)
