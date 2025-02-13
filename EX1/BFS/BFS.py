@@ -3,7 +3,7 @@
 # Input Data:
 #   graphData/randLocalGraph
 # System:
-#   CPU: X86AtomicSimpleCPU 200MHz
+#   CPU: X86TimingSimpleCPU 200MHz
 #   MEM: DDR3_1600_8x8 8GB
 
 import os
@@ -35,7 +35,7 @@ INPUT_CMD = [
 ]
 PROCESS_CMD = [
     DEFAULT_BINARY, 
-    "-o", f"{DEFAULT_OUTFILE}",
+    # "-o", f"{DEFAULT_OUTFILE}",
     # "-src", f"{}", 
     # "-r", f"{}", 
     DEFAULT_INFILE
@@ -57,10 +57,10 @@ system.clk_domain.voltage_domain = VoltageDomain() # defaults to 1V
 ## Create a crossbar so that we can connect main memory and the CPU (below)
 system.membus = SystemXBar()
 system.system_port = system.membus.cpu_side_ports
-## Use atomic mode for memory modelling
-system.mem_mode = 'atomic'
+## Use timing mode for memory modelling
+system.mem_mode = 'timing'
 # CPU Setup
-system.cpu = X86AtomicSimpleCPU()
+system.cpu = X86TimingSimpleCPU()
 system.cpu.icache_port = system.membus.cpu_side_ports
 system.cpu.dcache_port = system.membus.cpu_side_ports
 ## This is needed when we use x86 CPUs

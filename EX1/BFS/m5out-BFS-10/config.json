@@ -20,7 +20,7 @@
         "exit_on_work_items": false,
         "init_param": 0,
         "m5ops_base": 0,
-        "mem_mode": "atomic",
+        "mem_mode": "timing",
         "mem_ranges": [
             "0:8589934592"
         ],
@@ -76,8 +76,8 @@
             }
         },
         "cpu": {
-            "type": "BaseAtomicSimpleCPU",
-            "cxx_class": "gem5::AtomicSimpleCPU",
+            "type": "BaseTimingSimpleCPU",
+            "cxx_class": "gem5::TimingSimpleCPU",
             "name": "cpu",
             "path": "system.cpu",
             "branchPred": null,
@@ -306,8 +306,6 @@
             "progress_interval": 0,
             "pwr_gating_latency": 300,
             "simpoint_start_insts": [],
-            "simulate_data_stalls": false,
-            "simulate_inst_stalls": false,
             "socket_id": 0,
             "switched_out": false,
             "syscallRetryLatency": 10000,
@@ -326,7 +324,6 @@
                 },
                 "eventq_index": 0
             },
-            "width": 1,
             "workload": [
                 {
                     "type": "Process",
@@ -335,8 +332,6 @@
                     "path": "system.cpu.workload",
                     "cmd": [
                         "/u/csc368h/winter/pub/workloads/pbbsbench/benchmarks/breadthFirstSearch/backForwardBFS/BFS",
-                        "-o",
-                        "/h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-10-output.txt",
                         "/h/u15/c1/00/zengzix2/CSC368/A1/EX1/BFS/bfs-10-input.adj"
                     ],
                     "cwd": "/h/u15/c1/00/zengzix2/CSC368/A1/EX1",
